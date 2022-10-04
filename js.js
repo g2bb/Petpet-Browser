@@ -36,8 +36,8 @@ function goToSite(){
 
     //Paste iFrame with URL
     top.document.getElementById('AppFrame').setAttribute("src",URL);
-    document.getElementById('active').setAttribute("data-url",URL);
-    //trackPage();
+    //document.getElementById('active').setAttribute("data-url",URL);
+    trackPage();
 }
 
 function switchTabs(TabNum){
@@ -65,9 +65,9 @@ function closeTab(){
 }
 
 function trackPage(){
-    var iframeTitle = document.getElementsByTagName('iframe')[0].contentDocument.title;
-    console.Log(iframeTitle);
-    document.getElementsById("active").innerHTML = iframeTitle + " <a id='closeBtn' onclick='closeTab()'>❌</a>";
+    var iframeTitle = document.getElementById('AppFrame').contentDocument;
+    console.log(iframeTitle);
+    document.getElementById("active").innerHTML = iframeTitle + " <a id='closeBtn' onclick='closeTab()'>❌</a>";
 }
 
 function NavBtns(){
