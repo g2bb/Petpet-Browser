@@ -36,36 +36,44 @@ function goToSite(){
 
     //Paste iFrame with URL
     top.document.getElementById('AppFrame').setAttribute("src",URL);
-    //document.getElementById('active').setAttribute("data-url",URL);
+    document.getElementById('active').setAttribute("data-url",URL);
     trackPage();
 }
 
-function switchTabs(TabNum){
+function switchTabs(tabNum){
+    console.log(tabNum);
+
     //Fetches input URL
-    var fetchURL = document.getElementById('TabNum').getAttribute("data-url");
+    var fetchURL = tabNum.getAttribute("data-url");
+
+    //Sets Tab as ActiveTab
+    tabNum.setAttribute('id','active');
 
     //Paste iFrame with URL
     top.document.getElementById('AppFrame').setAttribute("src",fetchURL);
-    trackPage('TabNum');
+    setTimeout(function(){trackPage();},500);
 }
 
 function newTab(){
     TabCount++;
-    var TabNum = "Tab" + TabCount;
-    document.getElementById('ntb').insertAdjacentHTML('beforebegin', '<button id="' + TabNum + '" class="tablinks" onclick="switchTabs(' + TabNum + ')">New Tab</button>');
+    document.getElementById('tabList').innerHTML += ('<button data-tabnum="' + TabCount + '" class="tablinks" onclick="switchTabs()" data-url="https://example.com">New Tab</button>');
 }
 
 function closeTab(){
     //Remove the Tab
-    document.getElementsById('active').remove;
+    document.getElementById('active').remove();
 
     //Switch to default Tab
-    switchTabs("Tab0");
-
+    var tabs = document.querySelectorAll("#tabList > .tablinks");
+    if (tabs.length < 1) {
+        newTab();
+        tabs = document.querySelectorAll("#tabList > .tablinks");
+    }
+    switchTabs(tabs[0]);
 }
 
 function trackPage(){
-    var iframeTitle = document.getElementById('AppFrame').contentDocument;
+    var iframeTitle = document.getElementById('AppFrame').contentWinddow.document.title;
     console.log(iframeTitle);
     document.getElementById("active").innerHTML = iframeTitle + " <a id='closeBtn' onclick='closeTab()'>❌</a>";
 }

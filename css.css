@@ -13,6 +13,10 @@ body{
     background: #0477bf;
 }
 
+#tabList{
+    float: left;
+}
+
 /* Style the buttons inside the tab */
 .tab button {
     background-color: #333;
@@ -86,6 +90,7 @@ body{
 
 #closeBtn{
     font-size: 13px;
+    z-index: 9000;
 }
 
 #AppFrame{

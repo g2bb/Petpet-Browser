@@ -8,7 +8,9 @@
 </head>
 <body>
     <div class="tab">
-        <button id="Tab0 active" class="tablinks" onclick="switchTabs(Tab0)">New Tab</button>
+        <div id="tabList">
+            <button id="active" class="tablinks" onclick="switchTabs()" data-url="https://example.com">New Tab <a id="closeBtn" onclick="closeTab()">❌</a></button>
+        </div>
         <button class="tablinks" id="ntb" onclick="newTab()">+</button>
         <button class="tablinks settingsbtn active" id="settingsbtn" onclick="openTab(event, 'Settings')">⚙</button>
     </div>
