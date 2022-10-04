@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Petpet Browser</title>
+    <link rel="stylesheet" href="css.css">
+    <script src="js.js"></script>
+</head>
+<body>
+    <div class="tab">
+        <button id="Tab0 active" class="tablinks" onclick="switchTabs(Tab0)">New Tab</button>
+        <button class="tablinks" id="ntb" onclick="newTab()">+</button>
+        <button class="tablinks settingsbtn active" id="settingsbtn" onclick="openTab(event, 'Settings')">⚙</button>
+    </div>
+    <div class="URL">
+        <input id="URL" class="URLField" type="text" placeholder="Type in a URL">
+        <button id="URLBtn" class="URLBtn" onclick="goToSite()">▶</button>
+    </div>
+
+    <div id="CR10 active" class="tabcontent">
+
+    </div>
+    <iframe src="https://google.com" frameborder="0" id="AppFrame"></iframe>
+    <div id="Settings" class="tabcontent" style="display: block;">
+        <div id="one">one</div>
+    </div>
+</body>
+<script>
+    var input = document.getElementById("URL");
+    input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("URLBtn").click();
+        }
+    });
+</script>
+</html>
